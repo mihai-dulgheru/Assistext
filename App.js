@@ -1,23 +1,14 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
-import SpeechScreen from "./components/SpeechScreen";
-import SuggestionsScreen from "./components/SuggestionsScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
+import { SpeechProvider } from "./components/SpeechContext";
+import TabNavigator from "./components/TabNavigator";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <SpeechScreen />
-      <SuggestionsScreen />
-      <StatusBar style="auto" />
-    </View>
+    <SpeechProvider>
+      <NavigationContainer>
+        <TabNavigator />
+      </NavigationContainer>
+    </SpeechProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

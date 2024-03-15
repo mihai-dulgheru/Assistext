@@ -1,17 +1,14 @@
 import * as Speech from "expo-speech";
-import * as React from "react";
+import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
+import { useSpeechContext } from "./SpeechContext";
 
 export default function SpeechScreen() {
+  const { speechOptions } = useSpeechContext();
   const text = "Acesta este un text pe care vreau să-l aud.";
 
   const speak = () => {
-    const options = {
-      language: "ro-RO",
-      pitch: 1.0,
-      rate: 1.0,
-    };
-    Speech.speak(text, options);
+    Speech.speak(text, speechOptions);
   };
 
   return (
@@ -22,4 +19,8 @@ export default function SpeechScreen() {
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+  },
+});
