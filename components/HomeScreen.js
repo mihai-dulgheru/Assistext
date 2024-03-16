@@ -20,7 +20,7 @@ const HomeScreen = ({navigation}) => {
   const renderItem = ({item}) => (
     <TouchableOpacity
       style={styles.lessonCard}
-      onPress={() => navigation.navigate('LessonDetails', {lesson: item})}>
+      onPress={() => navigation.navigate('Details', {lesson: item})}>
       <Text style={styles.lessonTitle}>{item.title}</Text>
       <Text>{item.subtitle}</Text>
     </TouchableOpacity>

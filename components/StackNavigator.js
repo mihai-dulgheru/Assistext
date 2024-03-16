@@ -9,7 +9,7 @@ function StackNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen name='Lessons' component={HomeScreen} />
-      <Stack.Screen name='LessonDetails' component={LessonDetailsScreen} />
+      <Stack.Screen name='Details' component={LessonDetailsScreen} />
     </Stack.Navigator>
   );
 }
