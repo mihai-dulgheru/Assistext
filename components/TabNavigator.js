@@ -1,9 +1,9 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import React from "react";
-import SettingsScreen from "./SettingsScreen";
-import StackNavigator from "./StackNavigator";
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+import React from 'react'
+import SettingsScreen from './SettingsScreen'
+import StackNavigator from './StackNavigator'
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator()
 
 function TabNavigator() {
   return (
@@ -11,11 +11,11 @@ function TabNavigator() {
       <Tab.Screen
         name="HomeTab"
         component={StackNavigator}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
-  );
+  )
 }
 
-export default TabNavigator;
+export default TabNavigator

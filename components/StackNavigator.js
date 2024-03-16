@@ -1,11 +1,11 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
-import DetailsScreen from "./DetailsScreen";
-import HomeScreen from "./HomeScreen";
-import SpeechScreen from "./SpeechScreen";
-import SuggestionsScreen from "./SuggestionsScreen";
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import React from 'react'
+import DetailsScreen from './DetailsScreen'
+import HomeScreen from './HomeScreen'
+import SpeechScreen from './SpeechScreen'
+import SuggestionsScreen from './SuggestionsScreen'
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
 function StackNavigator() {
   return (
@@ -15,7 +15,7 @@ function StackNavigator() {
       <Stack.Screen name="Speech" component={SpeechScreen} />
       <Stack.Screen name="Suggestions" component={SuggestionsScreen} />
     </Stack.Navigator>
-  );
+  )
 }
 
-export default StackNavigator;
+export default StackNavigator
