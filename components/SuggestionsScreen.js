@@ -49,7 +49,7 @@ export default function SuggestionsScreen() {
         fetchCompletion(inputText).then((result) => {
           setSuggestion(result);
         });
-      }, 3000);
+      }, 5000);
     } else {
       setSuggestion('');
     }
@@ -58,7 +58,7 @@ export default function SuggestionsScreen() {
 
   const addSuggestionToText = useCallback(() => {
     if (suggestion) {
-      setInputText((prevText) => prevText + suggestion);
+      setInputText((prevText) => prevText.trim() + ' ' + suggestion);
       setSuggestion('');
     }
   }, [suggestion]);
