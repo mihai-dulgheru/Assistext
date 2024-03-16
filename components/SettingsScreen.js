@@ -19,14 +19,12 @@ export default function SettingsScreen() {
         onValueChange={itemValue => updateSpeechOption('language', itemValue)}>
         <Picker.Item label="Română (România)" value="ro-RO" />
         <Picker.Item label="Engleză (SUA)" value="en-US" />
-        <Picker.Item label="Franțeză (Franța)" value="fr-FR" />
       </Picker>
 
       <Text>Înălțimea tonului de voce (Pitch):</Text>
       <TextInput
         style={styles.input}
         keyboardType="numeric"
-        // if parseFloat(value) is not a number, it will return 0
         onChangeText={value =>
           updateSpeechOption('pitch', parseFloat(value) || 0)
         }

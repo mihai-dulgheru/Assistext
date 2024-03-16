@@ -1,19 +1,15 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import React from 'react'
-import DetailsScreen from './DetailsScreen'
 import HomeScreen from './HomeScreen'
-import SpeechScreen from './SpeechScreen'
-import SuggestionsScreen from './SuggestionsScreen'
+import LessonDetailsScreen from './LessonDetailsScreen'
 
 const Stack = createNativeStackNavigator()
 
 function StackNavigator() {
   return (
     <Stack.Navigator>
-      {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
-      {/* <Stack.Screen name="Details" component={DetailsScreen} /> */}
-      <Stack.Screen name="Speech" component={SpeechScreen} />
-      <Stack.Screen name="Suggestions" component={SuggestionsScreen} />
+      <Stack.Screen name="Lessons" component={HomeScreen} />
+      <Stack.Screen name="LessonDetails" component={LessonDetailsScreen} />
     </Stack.Navigator>
   )
 }
