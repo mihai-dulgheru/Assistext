@@ -1,14 +1,14 @@
-import {Picker} from '@react-native-picker/picker'
-import React from 'react'
-import {StyleSheet, Text, TextInput, View} from 'react-native'
-import {useSpeechContext} from './SpeechContext'
+import {Picker} from '@react-native-picker/picker';
+import React from 'react';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {useSpeechContext} from './SpeechContext';
 
 export default function SettingsScreen() {
-  const {speechOptions, setSpeechOptions} = useSpeechContext()
+  const {speechOptions, setSpeechOptions} = useSpeechContext();
 
   const updateSpeechOption = (option, value) => {
-    setSpeechOptions({...speechOptions, [option]: value})
-  }
+    setSpeechOptions({...speechOptions, [option]: value});
+  };
 
   return (
     <View style={styles.container}>
@@ -16,16 +16,18 @@ export default function SettingsScreen() {
       <Picker
         selectedValue={speechOptions.language}
         style={styles.input}
-        onValueChange={itemValue => updateSpeechOption('language', itemValue)}>
-        <Picker.Item label="Română (România)" value="ro-RO" />
-        <Picker.Item label="Engleză (SUA)" value="en-US" />
+        onValueChange={(itemValue) =>
+          updateSpeechOption('language', itemValue)
+        }>
+        <Picker.Item label='Română (România)' value='ro-RO' />
+        <Picker.Item label='Engleză (SUA)' value='en-US' />
       </Picker>
 
       <Text>Înălțimea tonului de voce (Pitch):</Text>
       <TextInput
         style={styles.input}
-        keyboardType="numeric"
-        onChangeText={value =>
+        keyboardType='numeric'
+        onChangeText={(value) =>
           updateSpeechOption('pitch', parseFloat(value) || 0)
         }
         value={speechOptions.pitch.toString()}
@@ -34,8 +36,8 @@ export default function SettingsScreen() {
       <Text>Viteza de vorbire (Rate):</Text>
       <TextInput
         style={styles.input}
-        keyboardType="numeric"
-        onChangeText={value =>
+        keyboardType='numeric'
+        onChangeText={(value) =>
           updateSpeechOption('rate', parseFloat(value) || 0)
         }
         value={speechOptions.rate.toString()}
@@ -44,14 +46,14 @@ export default function SettingsScreen() {
       <Text>Volumul (Volume):</Text>
       <TextInput
         style={styles.input}
-        keyboardType="numeric"
-        onChangeText={value =>
+        keyboardType='numeric'
+        onChangeText={(value) =>
           updateSpeechOption('volume', parseFloat(value) || 0)
         }
         value={speechOptions.volume.toString()}
       />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -65,4 +67,4 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
   },
-})
+});

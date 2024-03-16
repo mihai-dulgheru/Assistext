@@ -1,5 +1,5 @@
-import React from 'react'
-import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
+import React from 'react';
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 const lessons = [
   {
@@ -14,7 +14,7 @@ const lessons = [
     subtitle: 'Capitolul următor',
     content: 'Acesta este conținutul lecției 2.',
   },
-]
+];
 
 const HomeScreen = ({navigation}) => {
   const renderItem = ({item}) => (
@@ -24,18 +24,18 @@ const HomeScreen = ({navigation}) => {
       <Text style={styles.lessonTitle}>{item.title}</Text>
       <Text>{item.subtitle}</Text>
     </TouchableOpacity>
-  )
+  );
 
   return (
     <View style={styles.container}>
       <FlatList
         data={lessons}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
       />
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -57,6 +57,6 @@ const styles = StyleSheet.create({
   text: {
     marginBottom: 20,
   },
-})
+});
 
-export default HomeScreen
+export default HomeScreen;

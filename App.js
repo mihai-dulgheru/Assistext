@@ -1,7 +1,7 @@
-import {NavigationContainer} from '@react-navigation/native'
-import React from 'react'
-import {SpeechProvider} from './components/SpeechContext'
-import TabNavigator from './components/TabNavigator'
+import {NavigationContainer} from '@react-navigation/native';
+import React from 'react';
+import {SpeechProvider} from './components/SpeechContext';
+import TabNavigator from './components/TabNavigator';
 
 export default function App() {
   return (
@@ -10,5 +10,5 @@ export default function App() {
         <TabNavigator />
       </NavigationContainer>
     </SpeechProvider>
-  )
+  );
 }

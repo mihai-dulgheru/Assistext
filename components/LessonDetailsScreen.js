@@ -1,26 +1,26 @@
-import * as Speech from 'expo-speech'
-import React from 'react'
-import {Button, ScrollView, StyleSheet, Text} from 'react-native'
-import {useSpeechContext} from './SpeechContext'
+import * as Speech from 'expo-speech';
+import React from 'react';
+import {Button, ScrollView, StyleSheet, Text} from 'react-native';
+import {useSpeechContext} from './SpeechContext';
 
 const LessonDetailsScreen = ({route}) => {
-  const {lesson} = route.params
-  const {speechOptions} = useSpeechContext()
+  const {lesson} = route.params;
+  const {speechOptions} = useSpeechContext();
 
   const readContent = () => {
-    const fullText = `${lesson.title}. ${lesson.subtitle}. ${lesson.content}`
-    Speech.speak(fullText, speechOptions)
-  }
+    const fullText = `${lesson.title}. ${lesson.subtitle}. ${lesson.content}`;
+    Speech.speak(fullText, speechOptions);
+  };
 
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>{lesson.title}</Text>
       <Text style={styles.subtitle}>{lesson.subtitle}</Text>
       <Text style={styles.content}>{lesson.content}</Text>
-      <Button title="Citește lecția" onPress={readContent} />
+      <Button title='Citește lecția' onPress={readContent} />
     </ScrollView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -39,6 +39,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 20,
   },
-})
+});
 
-export default LessonDetailsScreen
+export default LessonDetailsScreen;
