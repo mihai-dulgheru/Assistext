@@ -1,3 +1,4 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import axios from 'axios';
 import * as Clipboard from 'expo-clipboard';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
@@ -75,57 +76,89 @@ export default function SuggestionsScreen() {
         onChangeText={handleChangeText}
         value={inputText}
         multiline
-        numberOfLines={16}
+        numberOfLines={6}
       />
       <Text style={styles.placeholderText}>{suggestion}</Text>
-      <TouchableOpacity
-        onPress={addSuggestionToText}
-        style={styles.actionButton}>
-        <Text style={styles.actionButtonText}>Adaugă Sugestia</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={copyToClipboard} style={styles.copyButton}>
-        <Text style={styles.copyButtonText}>Copiază textul</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity
+          onPress={addSuggestionToText}
+          style={styles.actionButton}>
+          <Text style={styles.actionButtonText}>Adaugă Sugestia</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={copyToClipboard} style={styles.copyButton}>
+          <Ionicons name='copy' size={24} color='white' />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     padding: 20,
+    backgroundColor: '#f5f5f5',
   },
   textInput: {
-    height: 100,
-    borderColor: 'gray',
+    minHeight: 100,
+    borderColor: '#cccccc',
     borderWidth: 1,
-    marginBottom: 10,
+    marginBottom: 20,
+    padding: 10,
+    backgroundColor: 'white',
     textAlignVertical: 'top',
-  },
-  text: {
-    marginTop: 10,
+    borderRadius: 10,
+    fontSize: 16,
   },
   placeholderText: {
     color: '#a1a1a1',
     marginBottom: 10,
+    fontStyle: 'italic',
   },
-  copyButton: {
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: 10,
     marginTop: 10,
-    backgroundColor: '#007bff',
-    padding: 10,
-    borderRadius: 5,
   },
   actionButton: {
-    marginTop: 10,
-    backgroundColor: '#007bff',
-    padding: 10,
-    borderRadius: 5,
+    flex: 1,
+    backgroundColor: '#FFC107',
+    padding: 15,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   actionButtonText: {
     color: 'white',
-    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  copyButton: {
+    backgroundColor: '#007bff',
+    padding: 15,
+    borderRadius: 30,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   copyButtonText: {
     color: 'white',
-    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
