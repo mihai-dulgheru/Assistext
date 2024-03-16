@@ -12,10 +12,12 @@ import {
 
 const fetchCompletion = async (inputText) => {
   try {
-    const response = await axios.post(
-      'https://d6e5-86-121-161-196.ngrok-free.app/completions',
-      {prompt: inputText, maxTokens: 16, temperature: 0},
-    );
+    const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+    const response = await axios.post(`${apiUrl}/completions`, {
+      prompt: inputText,
+      maxTokens: 16,
+      temperature: 0,
+    });
     return response.data.choices[0].text.split(/[\n.]/)[0].trim();
   } catch (error) {
     if (axios.isAxiosError(error)) {

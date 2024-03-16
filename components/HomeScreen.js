@@ -1,35 +1,43 @@
+import {useQuery} from '@tanstack/react-query';
+import axios from 'axios';
 import React from 'react';
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-
-const lessons = [
-  {
-    id: '1',
-    title: 'Lecția 1',
-    subtitle: 'Introducere în curs',
-    content: 'Acesta este conținutul lecției 1.',
-  },
-  {
-    id: '2',
-    title: 'Lecția 2',
-    subtitle: 'Capitolul următor',
-    content: 'Acesta este conținutul lecției 2.',
-  },
-];
+import useFocusNotifyOnChangeProps from '../hooks/use-focus-notify-on-change-props';
 
 const HomeScreen = ({navigation}) => {
+  const notifyOnChangeProps = useFocusNotifyOnChangeProps();
+
+  const {data, dataUpdatedAt, error, status} = useQuery({
+    queryKey: ['lessons'],
+    queryFn: async () => {
+      const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+      const response = await axios.get(`${apiUrl}/lessons`);
+      return response.data;
+    },
+    notifyOnChangeProps,
+  });
+
+  if (status === 'loading') {
+    return <Text>Loading...</Text>;
+  }
+
+  if (status === 'error') {
+    return <Text>Error: {error.message}</Text>;
+  }
+
   const renderItem = ({item}) => (
     <TouchableOpacity
       style={styles.lessonCard}
-      onPress={() => navigation.navigate('Details', {lesson: item})}>
+      onPress={() => navigation.navigate('Details', {lessonId: item.id})}>
       <Text style={styles.lessonTitle}>{item.title}</Text>
-      <Text>{item.subtitle}</Text>
+      <Text>{item.sections?.[0]?.subtitle}</Text>
     </TouchableOpacity>
   );
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={lessons}
+        data={data}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
