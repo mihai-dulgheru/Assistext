@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {borderRadius, colors} from '../theme';
+import Layout from './Layout';
 
 const fetchCompletion = async (inputText) => {
   try {
@@ -71,27 +73,29 @@ export default function SuggestionsScreen() {
   }, [inputText]);
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.textInput}
-        placeholder='Introdu textul aici...'
-        onChangeText={handleChangeText}
-        value={inputText}
-        multiline
-        numberOfLines={6}
-      />
-      <Text style={styles.placeholderText}>{suggestion}</Text>
-      <View style={styles.buttonsContainer}>
-        <TouchableOpacity
-          onPress={addSuggestionToText}
-          style={styles.actionButton}>
-          <Text style={styles.actionButtonText}>Adaugă Sugestia</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={copyToClipboard} style={styles.copyButton}>
-          <Ionicons name='copy' size={24} color='white' />
-        </TouchableOpacity>
+    <Layout>
+      <View style={styles.container}>
+        <TextInput
+          style={styles.textInput}
+          placeholder='Introdu textul aici...'
+          onChangeText={handleChangeText}
+          value={inputText}
+          multiline
+          numberOfLines={4}
+        />
+        <Text style={styles.placeholderText}>{suggestion}</Text>
+        <View style={styles.buttonsContainer}>
+          <TouchableOpacity
+            onPress={addSuggestionToText}
+            style={styles.actionButton}>
+            <Text style={styles.actionButtonText}>Adaugă Sugestia</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={copyToClipboard} style={styles.copyButton}>
+            <Ionicons name='copy' size={24} color='white' />
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </Layout>
   );
 }
 
@@ -99,23 +103,28 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: colors.white,
   },
   textInput: {
     minHeight: 100,
-    borderColor: '#cccccc',
+    borderColor: colors.primary,
     borderWidth: 1,
     marginBottom: 20,
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     textAlignVertical: 'top',
-    borderRadius: 10,
+    borderRadius: borderRadius['2xl'],
     fontSize: 16,
+    lineHeight: 24,
+    fontWeight: '400',
   },
   placeholderText: {
-    color: '#a1a1a1',
-    marginBottom: 10,
+    fontSize: 16,
+    lineHeight: 24,
     fontStyle: 'italic',
+    fontWeight: '400',
+    color: colors.text,
+    marginBottom: 10,
   },
   buttonsContainer: {
     flexDirection: 'row',
@@ -126,12 +135,12 @@ const styles = StyleSheet.create({
   },
   actionButton: {
     flex: 1,
-    backgroundColor: '#FFC107',
+    backgroundColor: colors.primary,
     padding: 15,
-    borderRadius: 30,
+    borderRadius: borderRadius['2xl'],
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#000',
+    shadowColor: colors.primary,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -141,15 +150,16 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   actionButtonText: {
-    color: 'white',
+    color: colors.white,
     fontSize: 18,
-    fontWeight: 'bold',
+    lineHeight: 28,
+    fontWeight: '600',
   },
   copyButton: {
-    backgroundColor: '#007bff',
+    backgroundColor: colors.accent,
     padding: 15,
-    borderRadius: 30,
-    shadowColor: '#000',
+    borderRadius: borderRadius['2xl'],
+    shadowColor: colors.accent,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -159,8 +169,8 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   copyButtonText: {
-    color: 'white',
+    color: colors.white,
     fontSize: 18,
-    fontWeight: 'bold',
+    lineHeight: 28,
   },
 });

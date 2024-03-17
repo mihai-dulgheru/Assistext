@@ -12,6 +12,7 @@ import {
   View,
 } from 'react-native';
 import useFocusNotifyOnChangeProps from '../hooks/use-focus-notify-on-change-props';
+import {borderRadius, colors} from '../theme';
 import {useSpeechContext} from './SpeechContext';
 
 const LessonDetailsScreen = ({route}) => {
@@ -128,46 +129,49 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: colors.white,
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    lineHeight: 32,
+    fontWeight: '600',
+    color: colors.text,
     marginBottom: 15,
-    color: '#333',
   },
   subtitle: {
     fontSize: 20,
+    lineHeight: 28,
+    fontWeight: '500',
+    color: colors.text,
     marginBottom: 15,
-    color: '#444',
   },
   content: {
-    fontSize: 18,
-    marginBottom: 25,
+    fontSize: 16,
     lineHeight: 24,
-    color: '#555',
+    fontWeight: '400',
+    color: colors.text,
+    marginBottom: 25,
   },
   readButton: {
     alignItems: 'center',
     justifyContent: 'center',
     width: 100,
     height: 100,
-    borderRadius: 50,
+    borderRadius: borderRadius.full,
     alignSelf: 'center',
     marginVertical: 25,
     elevation: 3,
-    shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
   reading: {
-    backgroundColor: '#FF6347',
-    shadowColor: '#FF6347',
+    backgroundColor: colors.tertiary,
+    shadowColor: colors.tertiary,
   },
   notReading: {
-    backgroundColor: '#4CAF50',
-    shadowColor: '#4CAF50',
+    backgroundColor: colors.primary,
+    shadowColor: colors.primary,
   },
 });
 

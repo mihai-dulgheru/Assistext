@@ -1,6 +1,7 @@
 // import {Picker} from '@react-native-picker/picker';
 import React from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {borderRadius, colors} from '../theme';
 import {useSpeechContext} from './SpeechContext';
 
 export default function SettingsScreen() {
@@ -57,27 +58,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: colors.white,
   },
   label: {
     fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 5,
-    color: '#333',
+    lineHeight: 24,
+    fontWeight: '500',
+    color: colors.text,
   },
   input: {
     height: 50,
-    backgroundColor: 'white',
-    borderColor: '#ccc',
+    backgroundColor: colors.white,
+    borderColor: colors.primary,
     borderWidth: 1,
     marginBottom: 15,
-    borderRadius: 5,
+    borderRadius: borderRadius['2xl'],
     paddingHorizontal: 10,
   },
   pickerContainer: {
-    borderColor: '#ccc',
+    borderColor: colors.primary,
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: borderRadius['2xl'],
     marginBottom: 15,
     overflow: 'hidden',
   },

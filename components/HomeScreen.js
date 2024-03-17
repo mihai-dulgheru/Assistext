@@ -3,6 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import useFocusNotifyOnChangeProps from '../hooks/use-focus-notify-on-change-props';
+import {borderRadius, colors} from '../theme';
 
 const HomeScreen = ({navigation}) => {
   const notifyOnChangeProps = useFocusNotifyOnChangeProps();
@@ -30,7 +31,7 @@ const HomeScreen = ({navigation}) => {
       style={styles.lessonCard}
       onPress={() => navigation.navigate('Details', {lessonId: item.id})}>
       <Text style={styles.lessonTitle}>{item.title}</Text>
-      <Text>{item.sections?.[0]?.subtitle}</Text>
+      <Text style={styles.lessonSubtitle}>{item.sections?.[0]?.subtitle}</Text>
     </TouchableOpacity>
   );
 
@@ -48,22 +49,30 @@ const HomeScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 20,
+    paddingVertical: 10,
+    backgroundColor: colors.white,
   },
   lessonCard: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: colors.secondary,
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
-    borderRadius: 5,
+    borderRadius: borderRadius['2xl'],
     elevation: 3,
+    shadowColor: colors.secondary,
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
   lessonTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
+    lineHeight: 28,
+    fontWeight: '500',
   },
-  text: {
-    marginBottom: 20,
+  lessonSubtitle: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: '300',
   },
 });
 

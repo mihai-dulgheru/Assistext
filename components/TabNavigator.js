@@ -1,47 +1,46 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {getHeaderTitle} from '@react-navigation/elements';
 import React from 'react';
+import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
+import {colors} from '../theme';
+import Header from './Header';
 import SettingsScreen from './SettingsScreen';
 import StackNavigator from './StackNavigator';
 import SuggestionsScreen from './SuggestionsScreen';
+import TabBar from './TabBar';
 
 const Tab = createBottomTabNavigator();
 
-function TabNavigator() {
+export default function TabNavigator() {
   return (
-    <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({focused, color, size}) => {
-          let iconName;
-
-          switch (route.name) {
-            case 'Home':
-              iconName = focused ? 'home' : 'home-outline';
-              break;
-            case 'Suggestions':
-              iconName = focused ? 'bulb' : 'bulb-outline';
-              break;
-            case 'Settings':
-              iconName = focused ? 'settings' : 'settings-outline';
-              break;
-            default:
-              break;
-          }
-
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
-      })}>
-      <Tab.Screen
-        name='Home'
-        component={StackNavigator}
-        options={{headerShown: false}}
+    <SafeAreaView style={styles.container}>
+      <StatusBar
+        animated
+        backgroundColor={colors.white}
+        barStyle='dark-content'
       />
-      <Tab.Screen name='Suggestions' component={SuggestionsScreen} />
-      <Tab.Screen name='Settings' component={SettingsScreen} />
-    </Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          header: ({route, options}) => {
+            const title = getHeaderTitle(options, route.name);
+            return <Header style={options.headerStyle} title={title} />;
+          },
+        }}
+        tabBar={(props) => <TabBar {...props} />}>
+        <Tab.Screen
+          name='Acasă'
+          component={StackNavigator}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen name='Autocompletare' component={SuggestionsScreen} />
+        <Tab.Screen name='Setări' component={SettingsScreen} />
+      </Tab.Navigator>
+    </SafeAreaView>
   );
 }
 
-export default TabNavigator;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
