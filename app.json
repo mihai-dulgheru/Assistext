@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#f5f1fd"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -22,9 +20,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#f5f1fd"
       },
-      "permissions": [
-        "android.permission.INTERNET"
-      ],
+      "permissions": ["android.permission.INTERNET"],
       "package": "com.mihai.dulgheru.Assistext"
     },
     "extra": {

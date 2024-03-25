@@ -2,12 +2,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {getHeaderTitle} from '@react-navigation/elements';
 import React from 'react';
 import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
+import Header from '../components/Header';
+import TabBar from '../components/TabBar';
+import SettingsScreen from '../screens/SettingsScreen';
+import SuggestionsScreen from '../screens/SuggestionsScreen';
 import {colors} from '../theme';
-import Header from './Header';
-import SettingsScreen from './SettingsScreen';
 import StackNavigator from './StackNavigator';
-import SuggestionsScreen from './SuggestionsScreen';
-import TabBar from './TabBar';
 
 const Tab = createBottomTabNavigator();
 

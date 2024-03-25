@@ -1,9 +1,9 @@
 import {getHeaderTitle} from '@react-navigation/elements';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import Header from './Header';
-import HomeScreen from './HomeScreen';
-import LessonDetailsScreen from './LessonDetailsScreen';
+import Header from '../components/Header';
+import HomeScreen from '../screens/HomeScreen';
+import LessonDetailsScreen from '../screens/LessonDetailsScreen';
 
 const Stack = createNativeStackNavigator();
 

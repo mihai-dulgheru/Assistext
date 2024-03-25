@@ -9,8 +9,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import Layout from '../components/Layout';
 import {borderRadius, colors} from '../theme';
-import Layout from './Layout';
 
 const fetchCompletion = async (inputText) => {
   try {

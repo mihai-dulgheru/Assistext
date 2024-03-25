@@ -1,8 +1,8 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import React from 'react';
-import {SpeechProvider} from './components/SpeechContext';
-import TabNavigator from './components/TabNavigator';
+import {SpeechProvider} from './context/SpeechContext';
+import TabNavigator from './navigation/TabNavigator';
 
 const queryClient = new QueryClient();
 

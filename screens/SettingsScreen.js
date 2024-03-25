@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {useSpeechContext} from '../context/SpeechContext';
 import {borderRadius, colors} from '../theme';
-import {useSpeechContext} from './SpeechContext';
 
 export default function SettingsScreen() {
   const {speechOptions, setSpeechOptions} = useSpeechContext();

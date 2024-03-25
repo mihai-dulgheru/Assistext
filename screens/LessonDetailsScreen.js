@@ -11,9 +11,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {useSpeechContext} from '../context/SpeechContext';
 import useFocusNotifyOnChangeProps from '../hooks/use-focus-notify-on-change-props';
 import {borderRadius, colors} from '../theme';
-import {useSpeechContext} from './SpeechContext';
 
 const LessonDetailsScreen = ({route}) => {
   const {lessonId} = route.params;
