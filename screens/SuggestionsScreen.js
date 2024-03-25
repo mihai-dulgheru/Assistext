@@ -1,7 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import axios from 'axios';
 import * as Clipboard from 'expo-clipboard';
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,62 +9,18 @@ import {
   View,
 } from 'react-native';
 import Layout from '../components/Layout';
+import useDelayedAutoComplete from '../hooks/use-delayed-auto-complete';
 import {borderRadius, colors} from '../theme';
-
-const fetchCompletion = async (inputText) => {
-  try {
-    const apiUrl = process.env.EXPO_PUBLIC_API_URL;
-    const response = await axios.post(`${apiUrl}/completions`, {
-      prompt: inputText,
-      maxTokens: 12,
-      temperature: 0,
-    });
-    return response.data.choices[0].text.split(/[\n.]/)[0].trim();
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      if (error.response) {
-        console.error('Server returned an error:', error.response.data);
-      } else if (error.request) {
-        console.error('No response received from server:', error.request);
-      } else {
-        console.error('Request setup error:', error.message);
-      }
-    } else {
-      console.error('Request error:', error.message);
-    }
-    return '';
-  }
-};
 
 export default function SuggestionsScreen() {
   const [inputText, setInputText] = useState('');
   const [suggestion, setSuggestion] = useState('');
-  const timerRef = useRef(null);
+  useDelayedAutoComplete(inputText, setSuggestion, 3000);
 
   const handleChangeText = useCallback((text) => {
     setInputText(text);
     setSuggestion('');
   }, []);
-
-  useEffect(() => {
-    if (inputText.length >= 3) {
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
-      timerRef.current = setTimeout(() => {
-        fetchCompletion(inputText)
-          .then((result) => {
-            setSuggestion(result);
-          })
-          .catch(() => {
-            setSuggestion('');
-          });
-      }, 3000);
-    } else {
-      setSuggestion('');
-    }
-    return () => clearTimeout(timerRef.current);
-  }, [inputText]);
 
   const addSuggestionToText = useCallback(() => {
     if (suggestion) {
