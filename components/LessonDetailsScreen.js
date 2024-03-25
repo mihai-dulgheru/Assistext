@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: borderRadius.full,
     alignSelf: 'center',
-    marginVertical: 25,
+    marginTop: 25,
     elevation: 3,
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,

@@ -81,7 +81,7 @@ export default function SuggestionsScreen() {
           onChangeText={handleChangeText}
           value={inputText}
           multiline
-          numberOfLines={4}
+          numberOfLines={8}
         />
         <Text style={styles.placeholderText}>{suggestion}</Text>
         <View style={styles.buttonsContainer}>
