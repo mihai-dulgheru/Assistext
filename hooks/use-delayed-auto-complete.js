@@ -5,12 +5,18 @@ function useDelayedAutoComplete(inputText, setStateAction, delay = 3000) {
   const timerRef = useRef(null);
 
   useEffect(() => {
-    if (inputText.length >= 3) {
+    const prompt = inputText
+      .split(/[.!?\n]/)
+      .slice(-1)[0]
+      .split(' ')
+      .slice(-20)
+      .join(' ');
+    if (prompt.length >= 3) {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
       }
       timerRef.current = setTimeout(() => {
-        fetchCompletion(inputText)
+        fetchCompletion(prompt)
           .then((result) => {
             setStateAction(result);
           })

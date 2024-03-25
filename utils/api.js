@@ -8,7 +8,8 @@ export const fetchCompletion = async (inputText) => {
       maxTokens: 12,
       temperature: 0,
     });
-    return response.data.choices[0].text.split(/[\n.]/)[0].trim();
+    const text = response.data.choices[0].text;
+    return text.split(/[.!?\n]/)[0].trim() + (text.includes('.') ? '.' : '');
   } catch (error) {
     if (axios.isAxiosError(error)) {
       if (error.response) {
