@@ -17,7 +17,7 @@ const fetchCompletion = async (inputText) => {
     const apiUrl = process.env.EXPO_PUBLIC_API_URL;
     const response = await axios.post(`${apiUrl}/completions`, {
       prompt: inputText,
-      maxTokens: 16,
+      maxTokens: 12,
       temperature: 0,
     });
     return response.data.choices[0].text.split(/[\n.]/)[0].trim();
@@ -49,12 +49,18 @@ export default function SuggestionsScreen() {
 
   useEffect(() => {
     if (inputText.length >= 3) {
-      if (timerRef.current) clearTimeout(timerRef.current);
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
       timerRef.current = setTimeout(() => {
-        fetchCompletion(inputText).then((result) => {
-          setSuggestion(result);
-        });
-      }, 5000);
+        fetchCompletion(inputText)
+          .then((result) => {
+            setSuggestion(result);
+          })
+          .catch(() => {
+            setSuggestion('');
+          });
+      }, 3000);
     } else {
       setSuggestion('');
     }
@@ -68,9 +74,13 @@ export default function SuggestionsScreen() {
     }
   }, [suggestion]);
 
-  const copyToClipboard = useCallback(async () => {
-    await Clipboard.setStringAsync(inputText);
-  }, [inputText]);
+  const copyToClipboard = useCallback(
+    async (event) => {
+      event.preventDefault();
+      await Clipboard.setStringAsync(inputText);
+    },
+    [inputText],
+  );
 
   return (
     <Layout>
