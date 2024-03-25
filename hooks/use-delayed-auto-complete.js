@@ -10,7 +10,8 @@ function useDelayedAutoComplete(inputText, setStateAction, delay = 3000) {
       .slice(-1)[0]
       .split(' ')
       .slice(-20)
-      .join(' ');
+      .join(' ')
+      .trim();
     if (prompt.length >= 3) {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
