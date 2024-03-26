@@ -8,7 +8,7 @@ import {borderRadius, colors} from '../theme';
 const HomeScreen = ({navigation}) => {
   const notifyOnChangeProps = useFocusNotifyOnChangeProps();
 
-  const {data, dataUpdatedAt, error, status} = useQuery({
+  const {data, error, status} = useQuery({
     queryKey: ['lessons'],
     queryFn: async () => {
       const apiUrl = process.env.EXPO_PUBLIC_API_URL;

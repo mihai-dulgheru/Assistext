@@ -26,7 +26,7 @@ const LessonDetailsScreen = ({route}) => {
   const notifyOnChangeProps = useFocusNotifyOnChangeProps();
   const {speechOptions} = useSpeechContext();
 
-  const {data, dataUpdatedAt, error, status} = useQuery({
+  const {data, error, status} = useQuery({
     queryKey: ['lessons', lessonId],
     queryFn: async () => {
       const apiUrl = process.env.EXPO_PUBLIC_API_URL;

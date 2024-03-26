@@ -16,7 +16,7 @@ export default function SettingsScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Înălțimea tonului de voce (Pitch):</Text>
+      <Text style={styles.label}>Înălțimea tonului (Pitch):</Text>
       <TextInput
         style={styles.input}
         keyboardType='decimal-pad'
@@ -29,13 +29,6 @@ export default function SettingsScreen() {
         keyboardType='decimal-pad'
         onEndEditing={(e) => updateSpeechOption('rate', e.nativeEvent.text)}
         defaultValue={speechOptions.rate.toString()}
-      />
-      <Text style={styles.label}>Volumul (Volume):</Text>
-      <TextInput
-        style={styles.input}
-        keyboardType='decimal-pad'
-        onEndEditing={(e) => updateSpeechOption('volume', e.nativeEvent.text)}
-        defaultValue={speechOptions.volume.toString()}
       />
     </View>
   );
@@ -61,15 +54,5 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     borderRadius: borderRadius['2xl'],
     paddingHorizontal: 10,
-  },
-  pickerContainer: {
-    borderColor: colors.primary,
-    borderWidth: 1,
-    borderRadius: borderRadius['2xl'],
-    marginBottom: 15,
-    overflow: 'hidden',
-  },
-  picker: {
-    height: 50,
   },
 });
