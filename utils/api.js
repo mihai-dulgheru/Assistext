@@ -5,7 +5,7 @@ export const fetchCompletion = async (inputText) => {
     const apiUrl = process.env.EXPO_PUBLIC_API_URL;
     const response = await axios.post(`${apiUrl}/completions`, {
       prompt: inputText,
-      maxTokens: 12,
+      maxTokens: 8,
       temperature: 0,
     });
     const text = response.data.choices[0].text;

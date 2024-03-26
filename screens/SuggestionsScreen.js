@@ -9,7 +9,7 @@ import styles from '../styles/SuggestionsScreen.styles.js';
 export default function SuggestionsScreen() {
   const [inputText, setInputText] = useState('');
   const [suggestion, setSuggestion] = useState('');
-  useDelayedAutoComplete(inputText, setSuggestion, 1000);
+  useDelayedAutoComplete(inputText, setSuggestion, 3000);
 
   const handleChangeText = useCallback((text) => {
     setInputText(text);
