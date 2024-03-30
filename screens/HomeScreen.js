@@ -31,7 +31,11 @@ const HomeScreen = ({navigation}) => {
       style={styles.lessonCard}
       onPress={() => navigation.navigate('Details', {lessonId: item.id})}>
       <Text style={styles.lessonTitle}>{item.title}</Text>
-      <Text style={styles.lessonSubtitle}>{item.sections?.[0]?.subtitle}</Text>
+      {item.sections?.[0]?.subtitle && (
+        <Text style={styles.lessonSubtitle}>
+          {item.sections?.[0]?.subtitle}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 

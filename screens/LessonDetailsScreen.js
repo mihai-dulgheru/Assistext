@@ -15,6 +15,12 @@ import {useSpeechContext} from '../context/SpeechContext';
 import useFocusNotifyOnChangeProps from '../hooks/use-focus-notify-on-change-props';
 import {borderRadius, colors} from '../theme';
 
+const FirstLineIndentation = (str) => {
+  const indentedText = `    ${str}`;
+
+  return <Text>{indentedText}</Text>;
+};
+
 const LessonDetailsScreen = ({route}) => {
   const {lessonId} = route.params;
   if (!lessonId) {
@@ -102,8 +108,12 @@ const LessonDetailsScreen = ({route}) => {
         <Text style={styles.title}>{data?.title}</Text>
         {data?.sections?.map((section, index) => (
           <View key={index}>
-            <Text style={styles.subtitle}>{section.subtitle}</Text>
-            <Text style={styles.content}>{section.content}</Text>
+            {section.subtitle && (
+              <Text style={styles.subtitle}>{section.subtitle}</Text>
+            )}
+            <Text style={styles.content}>
+              {FirstLineIndentation(section.content)}
+            </Text>
           </View>
         ))}
       </ScrollView>
